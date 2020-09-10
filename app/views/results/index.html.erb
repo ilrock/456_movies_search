@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <%= form_tag results_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a movie or a series"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <div id="movies">
+        <% @results.each do |result| %>
+          <div class="card my-3 p-3">
+            <h4><%= result.searchable_type %></h4>
+            <p><%= result.content %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
